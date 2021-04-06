@@ -10,7 +10,7 @@ type CreateFileRequest struct {
 	PhysicalPath    string               `json:"physical_path"`
 	Type			string				 `json:"type"`
 	Alias 			string				 `json:"alias"`
-	Parent 			[]FileParent		 `json:"parent"`
+	Parent 			FileParent		     `json:"parent"`
 }
 
 func (client Client) CreateFile(ctx context.Context, req CreateFileRequest) (*File, error) {
