@@ -1,3 +1,3 @@
-module github.com/maxjoehnk/microsoft-iis-administration
+module github.com/nrgribeiro/microsoft-iis-administration
 
 go 1.12
