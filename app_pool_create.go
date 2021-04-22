@@ -5,9 +5,10 @@ import (
 	"encoding/json"
 )
 
-func (client Client) CreateAppPool(ctx context.Context, name string) (*ApplicationPool, error) {
+func (client Client) CreateAppPool(ctx context.Context, name string, runtime string) (*ApplicationPool, error) {
 	reqBody := CreateApplicationPoolRequest{
 		Name: name,
+		ManagedRuntime: runtime,
 	}
 	res, err := httpPost(ctx, client, "/api/webserver/application-pools", reqBody)
 	if err != nil {
@@ -23,4 +24,5 @@ func (client Client) CreateAppPool(ctx context.Context, name string) (*Applicati
 
 type CreateApplicationPoolRequest struct {
 	Name string `json:"name"`
+	ManagedRuntime string `json:"managed_runtime_version"`
 }

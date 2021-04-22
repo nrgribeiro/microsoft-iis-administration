@@ -6,10 +6,11 @@ import (
 	"fmt"
 )
 
-func (client Client) UpdateAppPool(ctx context.Context, id, name string) (*ApplicationPool, error) {
+func (client Client) UpdateAppPool(ctx context.Context, id, name string, runtime string) (*ApplicationPool, error) {
 	reqBody := struct {
 		Name string `json:"name"`
-	}{name}
+		ManagedRuntime string `json:"managed_runtime_version"`
+	}{name, runtime}
 	url := fmt.Sprintf("/api/webserver/application-pools/%s", id)
 	res, err := httpPatch(ctx, client, url, reqBody)
 	if err != nil {
